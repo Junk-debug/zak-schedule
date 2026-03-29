@@ -3,6 +3,9 @@ import type { ScheduleStore } from "@/lib/scraper/types";
 import { ZakScraper } from "@/lib/scraper/scraper";
 import { ScheduleParser } from "@/lib/scraper/parser";
 import { ScheduleFileStore } from "@/lib/scraper/store";
+import { logger as baseLogger } from "@/lib/scraper/logger";
+
+const log = baseLogger.child({ module: "data" });
 
 const BASE_URL = "https://gdansk.zak.edu.pl";
 const DATA_DIR = path.resolve(process.cwd(), "data");
@@ -23,7 +26,7 @@ async function ensureFresh(): Promise<void> {
   if (existing && meta?.lastChecked) {
     const age = Date.now() - new Date(meta.lastChecked).getTime();
     if (age < FRESHNESS_TTL) {
-      console.log("[data] Schedule is fresh, skipping scrape");
+      log.info({ ageMinutes: Math.round(age / 60000), ttlMinutes: Math.round(FRESHNESS_TTL / 60000) }, "Schedule is fresh, skipping scrape");
       return;
     }
   }
@@ -46,37 +49,37 @@ async function scrapeInBackground(meta: Awaited<ReturnType<typeof store.loadMeta
   try {
     await doScrape(meta, true);
   } catch (err) {
-    console.error("[data] Background scrape failed:", err);
+    log.error({ err }, "Background scrape failed");
   }
 }
 
 async function doScrape(meta: Awaited<ReturnType<typeof store.loadMeta>>, hasExisting: unknown): Promise<void> {
-  console.log("[data] Scraping schedule...");
+  log.info("Starting scrape");
   const articleUrl = await scraper.findScheduleArticleUrl();
   if (!articleUrl) {
-    const msg = "[data] Schedule article not found";
+    const msg = "Schedule article not found";
     if (!hasExisting) throw new Error(msg);
-    console.warn(msg);
+    log.warn(msg);
     return;
   }
 
   const pdfUrl = await scraper.findPdfUrl(articleUrl);
   if (!pdfUrl) {
-    const msg = "[data] PDF link not found";
+    const msg = "PDF link not found";
     if (!hasExisting) throw new Error(msg);
-    console.warn(msg);
+    log.warn(msg);
     return;
   }
 
   const now = new Date().toISOString();
 
   if (meta?.lastPdfUrl === pdfUrl) {
-    console.log("[data] Same PDF, updating lastChecked");
+    log.info({ pdfUrl }, "Same PDF, updating lastChecked");
     await store.saveMeta({ lastPdfUrl: meta.lastPdfUrl, lastChanged: meta.lastChanged, lastChecked: now });
     return;
   }
 
-  console.log("[data] New PDF found, parsing...");
+  log.info({ pdfUrl }, "New PDF found, parsing");
   const lessons = await parser.parse(pdfUrl);
 
   const schedule: ScheduleStore = { updatedAt: now, pdfUrl, lessons };
@@ -87,7 +90,7 @@ async function doScrape(meta: Awaited<ReturnType<typeof store.loadMeta>>, hasExi
     lastChanged: now,
   });
 
-  console.log(`[data] Schedule updated: ${lessons.length} lessons`);
+  log.info({ lessons: lessons.length }, "Schedule updated");
 }
 
 export async function loadSchedule(): Promise<ScheduleStore | null> {

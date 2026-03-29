@@ -2,6 +2,9 @@ import { readFile, writeFile, mkdir, copyFile, readdir } from "node:fs/promises"
 import { existsSync } from "node:fs";
 import path from "node:path";
 import type { ScheduleStore, Meta } from "./types";
+import { logger as baseLogger } from "./logger";
+
+const log = baseLogger.child({ module: "store" });
 
 function isFileNotFound(err: unknown): boolean {
   return err instanceof Error && "code" in err && (err as NodeJS.ErrnoException).code === "ENOENT";
@@ -23,26 +26,36 @@ export class ScheduleFileStore {
 
   async ensureDir(): Promise<void> {
     if (!existsSync(this.dataDir)) {
+      log.debug({ dir: this.dataDir }, "Creating data directory");
       await mkdir(this.dataDir, { recursive: true });
     }
     if (!existsSync(this.archiveDir)) {
+      log.debug({ dir: this.archiveDir }, "Creating archive directory");
       await mkdir(this.archiveDir, { recursive: true });
     }
   }
 
   async loadSchedule(): Promise<ScheduleStore | null> {
+    log.debug({ path: this.schedulePath }, "Loading schedule");
     try {
       const raw = await readFile(this.schedulePath, "utf-8");
-      return JSON.parse(raw) as ScheduleStore;
+      const store = JSON.parse(raw) as ScheduleStore;
+      log.trace({ lessons: store.lessons.length, updatedAt: store.updatedAt }, "Schedule loaded");
+      return store;
     } catch (err: unknown) {
-      if (isFileNotFound(err)) return null;
+      if (isFileNotFound(err)) {
+        log.debug("No schedule file found");
+        return null;
+      }
       throw err;
     }
   }
 
   async saveSchedule(store: ScheduleStore): Promise<void> {
+    log.info({ lessons: store.lessons.length, pdfUrl: store.pdfUrl }, "Saving schedule");
     await this.archiveCurrent();
     await writeFile(this.schedulePath, JSON.stringify(store, null, 2));
+    log.debug({ path: this.schedulePath }, "Schedule written to disk");
   }
 
   private async archiveCurrent(): Promise<void> {
@@ -58,7 +71,10 @@ export class ScheduleFileStore {
     }
 
     if (!existsSync(archivePath)) {
+      log.info({ archivePath }, "Archiving current schedule");
       await copyFile(this.schedulePath, archivePath);
+    } else {
+      log.debug({ archivePath }, "Archive already exists, skipping");
     }
   }
 
@@ -85,16 +101,23 @@ export class ScheduleFileStore {
   }
 
   async loadMeta(): Promise<Meta | null> {
+    log.debug({ path: this.metaPath }, "Loading meta");
     try {
       const raw = await readFile(this.metaPath, "utf-8");
-      return JSON.parse(raw) as Meta;
+      const meta = JSON.parse(raw) as Meta;
+      log.trace({ meta }, "Meta loaded");
+      return meta;
     } catch (err: unknown) {
-      if (isFileNotFound(err)) return null;
+      if (isFileNotFound(err)) {
+        log.debug("No meta file found");
+        return null;
+      }
       throw err;
     }
   }
 
   async saveMeta(meta: Meta): Promise<void> {
+    log.info({ meta }, "Saving meta");
     await writeFile(this.metaPath, JSON.stringify(meta, null, 2));
   }
 }

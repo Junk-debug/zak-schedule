@@ -1,6 +1,9 @@
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 import type { TextItem } from "pdfjs-dist/types/src/display/api.js";
 import type { Lesson, RawLesson } from "./types";
+import { logger as baseLogger } from "./logger";
+
+const log = baseLogger.child({ module: "parser" });
 
 
 interface PdfTextItem {
@@ -22,18 +25,25 @@ const MIN_SUBJECT_X = 90;
 
 export class ScheduleParser {
   async parse(pdfUrl: string): Promise<Lesson[]> {
+    log.info({ pdfUrl }, "Starting PDF parse");
     const rawLessons = await this.extractRawLessons(pdfUrl);
-    return this.expandAllSemesters(rawLessons);
+    log.debug({ rawLessons: rawLessons.length }, "Raw lessons extracted");
+    const lessons = this.expandAllSemesters(rawLessons);
+    log.info({ total: lessons.length }, "PDF parse complete");
+    return lessons;
   }
 
   private async extractRawLessons(pdfUrl: string): Promise<RawLesson[]> {
     const buffer = await this.fetchPdfBuffer(pdfUrl);
+    log.debug({ bytes: buffer.byteLength }, "PDF buffer loaded");
     const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+    log.debug({ pages: pdf.numPages }, "PDF document opened");
 
     try {
       const result: RawLesson[] = [];
       for (let p = 1; p <= pdf.numPages; p++) {
         const pageLessons = await this.parsePage(pdf, p);
+        log.debug({ page: p, lessons: pageLessons.length }, "Page parsed");
         result.push(...pageLessons);
       }
       return result;
@@ -43,6 +53,7 @@ export class ScheduleParser {
   }
 
   private async fetchPdfBuffer(url: string): Promise<ArrayBuffer> {
+    log.debug({ url }, "Fetching PDF");
     const res = await fetch(url);
     if (!res.ok) throw new Error(`Failed to fetch PDF: ${res.status}`);
     return res.arrayBuffer();
@@ -58,6 +69,7 @@ export class ScheduleParser {
       (item): item is TextItem => "str" in item
     ) as PdfTextItem[];
     const rows = this.groupByY(items);
+    log.trace({ page: pageNum, textItems: items.length, rows: rows.length }, "Page text extracted");
 
     const result: RawLesson[] = [];
     let currentDate: string | null = null;
@@ -74,6 +86,7 @@ export class ScheduleParser {
       const dateMatch = joinedText.match(DATE_PATTERN);
       if (dateMatch) {
         currentDate = dateMatch[0];
+        log.trace({ date: currentDate, page: pageNum }, "Found date row");
         continue;
       }
 
@@ -83,6 +96,7 @@ export class ScheduleParser {
         );
         colBoundaries = semesterItems.map((t) => t.transform[4]);
         semesterLabels = semesterItems.map((t) => t.str.trim());
+        log.debug({ semesterLabels, colBoundaries, page: pageNum }, "Found semester header");
         continue;
       }
 
@@ -114,6 +128,11 @@ export class ScheduleParser {
           allItems,
           colBoundaries,
           semesterLabels
+        );
+
+        log.trace(
+          { date: currentDate, lesson: +match[1], start: match[2], end: match[3], subjects, itemCount: allItems.length },
+          "Parsed lesson row"
         );
 
         result.push({
@@ -187,16 +206,26 @@ export class ScheduleParser {
 
   private expandAllSemesters(rawLessons: RawLesson[]): Lesson[] {
     const lessons: Lesson[] = [];
+    let skippedNoSemester = 0;
+    let skippedNoSubject = 0;
 
     for (const entry of rawLessons) {
       for (const [semesterLabel, parts] of Object.entries(entry.subjects)) {
         if (!parts || parts.length === 0) continue;
 
         const semesterNumber = this.parseSemesterNumber(semesterLabel);
-        if (!semesterNumber) continue;
+        if (!semesterNumber) {
+          skippedNoSemester++;
+          log.trace({ semesterLabel, parts }, "Skipped: no semester number");
+          continue;
+        }
 
         const { subject, room } = this.extractSubjectAndRoom(parts);
-        if (!subject) continue;
+        if (!subject) {
+          skippedNoSubject++;
+          log.trace({ semesterLabel, parts }, "Skipped: no subject extracted");
+          continue;
+        }
 
         lessons.push({
           date: entry.date,
@@ -210,6 +239,7 @@ export class ScheduleParser {
       }
     }
 
+    log.debug({ expanded: lessons.length, skippedNoSemester, skippedNoSubject }, "Semester expansion complete");
     return lessons;
   }
 
