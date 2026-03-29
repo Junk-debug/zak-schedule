@@ -11,14 +11,13 @@ import {
   filterBySemester,
 } from "@/lib/schedule";
 import { formatDate } from "@/lib/format";
-import { useSemesterParam } from "@/hooks/useSemesterParam";
-import { Header, HeaderLink } from "@/components/ui/Header";
+import { Header } from "@/components/ui/Header";
 import { MetaBar } from "@/components/ui/MetaBar";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { DayCard } from "@/components/ui/DayCard";
+import { Select } from "@/components/ui/Select";
 import { ScheduleTable } from "@/components/schedule/ScheduleTable";
 import { ScheduleGrid } from "@/components/schedule/ScheduleGrid";
-import { SemesterSelect } from "@/components/schedule/SemesterSelect";
 import { ArchiveList } from "./ArchiveList";
 
 function dateFromFilename(filename: string): string {
@@ -32,7 +31,8 @@ interface Props {
 export function ArchiveView({ archives }: Props) {
   const searchParams = useSearchParams();
   const selected = searchParams.get("file");
-  const semester = useSemesterParam();
+  const initialSemester = searchParams.get("semester") ? Number(searchParams.get("semester")) : null;
+  const [semester, setSemester] = useState<number | null>(initialSemester);
 
   const [schedule, setSchedule] = useState<ScheduleStore | null>(null);
   const [loading, setLoading] = useState(false);
@@ -52,14 +52,14 @@ export function ArchiveView({ archives }: Props) {
 
   const semesters = schedule ? extractSemesters(schedule.lessons) : [];
 
+  function handleSemesterChange(val: string) {
+    setSemester(val ? Number(val) : null);
+  }
+
   if (!selected) {
     return (
       <main>
-        <Header title="Archiwum planów zajęć">
-          <HeaderLink href="/">← Dziś</HeaderLink>
-          <HeaderLink href="/all" variant="secondary">Cały plan</HeaderLink>
-        </Header>
-
+        <Header active="/archive" semester={semester} />
         {archives.length === 0 ? (
           <EmptyState><p>Brak archiwalnych planów.</p></EmptyState>
         ) : (
@@ -71,11 +71,7 @@ export function ArchiveView({ archives }: Props) {
 
   return (
     <main>
-      <Header title="Archiwum planów zajęć">
-        {schedule && <SemesterSelect semesters={semesters} value={semester} />}
-        <HeaderLink href="/">← Dziś</HeaderLink>
-        <HeaderLink href="/all" variant="secondary">Cały plan</HeaderLink>
-      </Header>
+      <Header active="/archive" semester={semester} />
 
       {loading && <EmptyState><p>Ładowanie...</p></EmptyState>}
 
@@ -90,6 +86,14 @@ export function ArchiveView({ archives }: Props) {
             <span className="text-sm text-muted px-2.5 py-1 border border-border rounded-md bg-surface">
               Archiwum z {formatDate(dateFromFilename(selected))}
             </span>
+            <Select
+              value={semester?.toString() ?? ""}
+              onChange={handleSemesterChange}
+              options={[
+                { value: "", label: "Wszystkie semestry" },
+                ...semesters.map((s) => ({ value: s.toString(), label: `Semestr ${s}` })),
+              ]}
+            />
           </div>
 
           {extractDates(schedule.lessons).map((d) => {

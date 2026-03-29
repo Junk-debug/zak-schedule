@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ScheduleStore, Lesson } from "@/lib/scraper/types";
 import { buildTimeSlots, filterBySemester } from "@/lib/schedule";
 import { formatDate, weekdayFull } from "@/lib/format";
-import { Header, HeaderLink } from "@/components/ui/Header";
+import { Header } from "@/components/ui/Header";
 import { MetaBar } from "@/components/ui/MetaBar";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { DayCard } from "@/components/ui/DayCard";
@@ -18,8 +18,7 @@ interface Props {
   semesters: number[];
   semester: number | null;
   today: string;
-  onExportICS?: () => void;
-  interactive?: React.ReactNode;
+  filters?: React.ReactNode;
 }
 
 export function TodayContent({
@@ -27,19 +26,12 @@ export function TodayContent({
   semesters,
   semester,
   today,
-  onExportICS,
-  interactive,
+  filters,
 }: Props) {
-  const title = `${weekdayFull(today)}, ${formatDate(today)}`;
-
   if (!schedule) {
     return (
       <main>
-        <Header title={title}>
-          {interactive}
-          <HeaderLink href="/all" variant="secondary">Cały plan</HeaderLink>
-          <HeaderLink href="/archive">Archiwum</HeaderLink>
-        </Header>
+        <Header active="/" semester={semester} />
         <EmptyState><p>Brak danych.</p></EmptyState>
       </main>
     );
@@ -51,17 +43,17 @@ export function TodayContent({
 
   return (
     <main>
-      <Header title={title}>
-        {interactive}
-        <HeaderLink href="/all" variant="secondary">Cały plan</HeaderLink>
-        <HeaderLink href="/archive">Archiwum</HeaderLink>
-      </Header>
+      <Header active="/" semester={semester} />
 
-      <MetaBar
-        updatedAt={schedule.updatedAt}
-        pdfUrl={schedule.pdfUrl}
-        onExportICS={onExportICS}
-      />
+      <MetaBar updatedAt={schedule.updatedAt} pdfUrl={schedule.pdfUrl} />
+
+      {filters && (
+        <div className="flex items-center gap-2.5 mb-4 flex-wrap">{filters}</div>
+      )}
+
+      <h2 className="text-lg font-medium text-gray-900 mb-4">
+        {weekdayFull(today)}, {formatDate(today)}
+      </h2>
 
       {relevantLessons.length === 0 && (
         <EmptyState>

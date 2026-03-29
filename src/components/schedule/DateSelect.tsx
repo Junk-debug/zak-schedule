@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { Select } from "@/components/ui/Select";
 import { formatDate, weekdayShort } from "@/lib/format";
 
@@ -11,6 +11,7 @@ interface DateSelectProps {
 
 export function DateSelect({ dates, value }: DateSelectProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   function handleChange(val: string) {
@@ -20,7 +21,8 @@ export function DateSelect({ dates, value }: DateSelectProps) {
     } else {
       params.delete("date");
     }
-    router.push(`?${params.toString()}`);
+    const query = params.toString();
+    router.push(query ? `${pathname}?${query}` : pathname);
   }
 
   return (

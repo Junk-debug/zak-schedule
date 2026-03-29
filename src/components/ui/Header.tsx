@@ -1,40 +1,42 @@
 import Link from "next/link";
 
+const NAV_ITEMS = [
+  { href: "/", label: "Dziś" },
+  { href: "/all", label: "Cały plan" },
+  { href: "/archive", label: "Archiwum" },
+];
+
 interface HeaderProps {
-  title: string;
-  children?: React.ReactNode;
+  active: "/" | "/all" | "/archive";
+  semester?: number | null;
 }
 
-export function Header({ title, children }: HeaderProps) {
+export function Header({ active, semester }: HeaderProps) {
+  function buildHref(href: string): string {
+    if (semester) return `${href}?semester=${semester}`;
+    return href;
+  }
+
   return (
-    <header className="flex items-center justify-between flex-wrap gap-3 mb-6 pb-5 border-b border-border">
-      <h1 className="text-xl font-semibold text-gray-900 tracking-tight">
-        {title}
+    <header className="mb-6 pb-5 border-b border-border">
+      <h1 className="text-xl font-semibold text-gray-900 tracking-tight mb-4">
+        Plan zajęć ZAK Gdańsk
       </h1>
-      {children && (
-        <div className="flex gap-2 items-center flex-wrap">{children}</div>
-      )}
+      <nav className="flex gap-1">
+        {NAV_ITEMS.map(({ href, label }) => (
+          <Link
+            key={href}
+            href={buildHref(href)}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              active === href
+                ? "bg-gray-900 text-white"
+                : "border border-border text-gray-600 hover:bg-surface hover:text-gray-900"
+            }`}
+          >
+            {label}
+          </Link>
+        ))}
+      </nav>
     </header>
-  );
-}
-
-export function HeaderLink({
-  href,
-  children,
-  variant = "ghost",
-}: {
-  href: string;
-  children: React.ReactNode;
-  variant?: "ghost" | "secondary";
-}) {
-  const styles =
-    variant === "secondary"
-      ? "px-3.5 py-1.5 rounded-md border border-border text-sm font-medium hover:bg-surface transition-colors"
-      : "text-sm text-muted hover:text-gray-900 transition-colors";
-
-  return (
-    <Link href={href} className={styles}>
-      {children}
-    </Link>
   );
 }

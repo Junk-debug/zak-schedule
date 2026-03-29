@@ -1,7 +1,7 @@
 import type { ScheduleStore } from "@/lib/scraper/types";
 import { buildTimeSlots, filterBySemester } from "@/lib/schedule";
 import { formatDate } from "@/lib/format";
-import { Header, HeaderLink } from "@/components/ui/Header";
+import { Header } from "@/components/ui/Header";
 import { MetaBar } from "@/components/ui/MetaBar";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { DayCard } from "@/components/ui/DayCard";
@@ -13,9 +13,7 @@ interface Props {
   semesters: number[];
   semester: number | null;
   date: string;
-  onExportICS?: () => void;
-  headerControls?: React.ReactNode;
-  dateControl?: React.ReactNode;
+  filters?: React.ReactNode;
 }
 
 export function AllScheduleContent({
@@ -23,18 +21,12 @@ export function AllScheduleContent({
   semesters,
   semester,
   date,
-  onExportICS,
-  headerControls,
-  dateControl,
+  filters,
 }: Props) {
   if (!schedule) {
     return (
       <main>
-        <Header title="Plan zajęć ZAK Gdańsk">
-          {headerControls}
-          <HeaderLink href="/">← Dziś</HeaderLink>
-          <HeaderLink href="/archive">Archiwum</HeaderLink>
-        </Header>
+        <Header active="/all" semester={semester} />
         <EmptyState><p>Brak danych.</p></EmptyState>
       </main>
     );
@@ -45,22 +37,12 @@ export function AllScheduleContent({
 
   return (
     <main>
-      <Header title="Plan zajęć ZAK Gdańsk">
-        {headerControls}
-        <HeaderLink href="/">← Dziś</HeaderLink>
-        <HeaderLink href="/archive">Archiwum</HeaderLink>
-      </Header>
+      <Header active="/all" semester={semester} />
 
-      <MetaBar
-        updatedAt={schedule.updatedAt}
-        pdfUrl={schedule.pdfUrl}
-        onExportICS={onExportICS}
-      />
+      <MetaBar updatedAt={schedule.updatedAt} pdfUrl={schedule.pdfUrl} />
 
-      {dateControl && (
-        <div className="flex items-center gap-2.5 mb-4 flex-wrap">
-          {dateControl}
-        </div>
+      {filters && (
+        <div className="flex items-center gap-2.5 mb-4 flex-wrap">{filters}</div>
       )}
 
       {semesterLessons.length === 0 && (
