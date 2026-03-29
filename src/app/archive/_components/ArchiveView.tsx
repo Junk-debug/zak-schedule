@@ -42,14 +42,14 @@ export function ArchiveView({ archives }: Props) {
       setSchedule(null);
       return;
     }
-    let cancelled = false;
+    const controller = new AbortController();
     setLoading(true);
-    fetch(`/data/archive/${selected}`)
+    fetch(`/data/archive/${selected}`, { signal: controller.signal })
       .then((r) => (r.ok ? r.json() : null))
-      .then((data) => { if (!cancelled) setSchedule(data); })
-      .catch(() => { if (!cancelled) setSchedule(null); })
-      .finally(() => { if (!cancelled) setLoading(false); });
-    return () => { cancelled = true; };
+      .then((data) => setSchedule(data))
+      .catch((err) => { if (!controller.signal.aborted) setSchedule(null); })
+      .finally(() => { if (!controller.signal.aborted) setLoading(false); });
+    return () => controller.abort();
   }, [selected]);
 
   const semesters = schedule ? extractSemesters(schedule.lessons) : [];
