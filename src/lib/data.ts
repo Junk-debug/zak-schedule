@@ -11,18 +11,14 @@ const store = new ScheduleFileStore(DATA_DIR);
 const scraper = new ZakScraper(BASE_URL);
 const parser = new ScheduleParser();
 
-let refreshed = false;
+let scrapePromise: Promise<void> | null = null;
 
 async function ensureFresh(): Promise<void> {
-  if (refreshed) return;
-  refreshed = true;
-
   await store.ensureDir();
 
-  const meta = await store.loadMeta();
   const existing = await store.loadSchedule();
+  const meta = await store.loadMeta();
 
-  // Skip scraping if we have data and checked recently (within 1 hour)
   if (existing && meta?.lastChecked) {
     const age = Date.now() - new Date(meta.lastChecked).getTime();
     if (age < 60 * 60 * 1000) {
@@ -31,48 +27,64 @@ async function ensureFresh(): Promise<void> {
     }
   }
 
-  try {
-    console.log("[data] Scraping schedule...");
-    const articleUrl = await scraper.findScheduleArticleUrl();
-    if (!articleUrl) {
-      console.warn("[data] Schedule article not found");
-      return;
-    }
-
-    const pdfUrl = await scraper.findPdfUrl(articleUrl);
-    if (!pdfUrl) {
-      console.warn("[data] PDF link not found");
-      return;
-    }
-
-    const now = new Date().toISOString();
-
-    // If same PDF URL, just update lastChecked
-    if (meta && meta.lastPdfUrl === pdfUrl) {
-      console.log("[data] Same PDF, updating lastChecked");
-      await store.saveMeta({ ...meta, lastChecked: now });
-      return;
-    }
-
-    // New PDF — parse and save
-    console.log("[data] New PDF found, parsing...");
-    const lessons = await parser.parse(pdfUrl);
-
-    const schedule: ScheduleStore = { updatedAt: now, pdfUrl, lessons };
-    await store.saveSchedule(schedule);
-    await store.saveMeta({
-      lastPdfUrl: pdfUrl,
-      lastChecked: now,
-      lastChanged: now,
-    });
-
-    console.log(`[data] Schedule updated: ${lessons.length} lessons`);
-  } catch (err) {
-    console.error("[data] Scrape failed:", err);
-    if (!existing) {
-      throw new Error(`Scrape failed and no existing data: ${err}`);
-    }
+  if (existing) {
+    await scrapeInBackground(meta);
+    return;
   }
+
+  // No data at all — must scrape synchronously
+  if (!scrapePromise) {
+    scrapePromise = doScrape(meta, existing);
+  }
+  await scrapePromise;
+}
+
+async function scrapeInBackground(meta: Awaited<ReturnType<typeof store.loadMeta>>): Promise<void> {
+  try {
+    await doScrape(meta, true);
+  } catch (err) {
+    console.error("[data] Background scrape failed:", err);
+  }
+}
+
+async function doScrape(meta: Awaited<ReturnType<typeof store.loadMeta>>, hasExisting: unknown): Promise<void> {
+  console.log("[data] Scraping schedule...");
+  const articleUrl = await scraper.findScheduleArticleUrl();
+  if (!articleUrl) {
+    const msg = "[data] Schedule article not found";
+    if (!hasExisting) throw new Error(msg);
+    console.warn(msg);
+    return;
+  }
+
+  const pdfUrl = await scraper.findPdfUrl(articleUrl);
+  if (!pdfUrl) {
+    const msg = "[data] PDF link not found";
+    if (!hasExisting) throw new Error(msg);
+    console.warn(msg);
+    return;
+  }
+
+  const now = new Date().toISOString();
+
+  if (meta && meta.lastPdfUrl === pdfUrl) {
+    console.log("[data] Same PDF, updating lastChecked");
+    await store.saveMeta({ ...meta, lastChecked: now });
+    return;
+  }
+
+  console.log("[data] New PDF found, parsing...");
+  const lessons = await parser.parse(pdfUrl);
+
+  const schedule: ScheduleStore = { updatedAt: now, pdfUrl, lessons };
+  await store.saveSchedule(schedule);
+  await store.saveMeta({
+    lastPdfUrl: pdfUrl,
+    lastChecked: now,
+    lastChanged: now,
+  });
+
+  console.log(`[data] Schedule updated: ${lessons.length} lessons`);
 }
 
 export async function loadSchedule(): Promise<ScheduleStore | null> {
