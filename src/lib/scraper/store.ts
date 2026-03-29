@@ -62,8 +62,11 @@ export class ScheduleFileStore {
   }
 
   async loadArchive(filename: string): Promise<ScheduleStore | null> {
+    const resolved = path.resolve(this.archiveDir, filename);
+    if (!resolved.startsWith(this.archiveDir + path.sep)) return null;
+
     try {
-      const raw = await readFile(path.join(this.archiveDir, filename), "utf-8");
+      const raw = await readFile(resolved, "utf-8");
       return JSON.parse(raw) as ScheduleStore;
     } catch {
       return null;
