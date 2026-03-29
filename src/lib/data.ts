@@ -15,9 +15,16 @@ const store = new ScheduleFileStore(DATA_DIR);
 const scraper = new ZakScraper(BASE_URL);
 const parser = new ScheduleParser();
 
-let scrapePromise: Promise<void> | null = null;
+let freshPromise: Promise<void> | null = null;
 
-async function ensureFresh(): Promise<void> {
+function ensureFresh(): Promise<void> {
+  if (!freshPromise) {
+    freshPromise = doEnsureFresh();
+  }
+  return freshPromise;
+}
+
+async function doEnsureFresh(): Promise<void> {
   await store.ensureDir();
 
   const existing = await store.loadSchedule();
@@ -37,12 +44,7 @@ async function ensureFresh(): Promise<void> {
   }
 
   // No data at all — must scrape synchronously
-  if (!scrapePromise) {
-    scrapePromise = doScrape(meta, existing).finally(() => {
-      scrapePromise = null;
-    });
-  }
-  await scrapePromise;
+  await doScrape(meta, existing);
 }
 
 async function scrapeInBackground(meta: Awaited<ReturnType<typeof store.loadMeta>>): Promise<void> {
