@@ -1,7 +1,7 @@
 import { readFile, writeFile, mkdir, copyFile, readdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
-import type { ScheduleStore, Meta } from "./types.js";
+import type { ScheduleStore, Meta } from "./types";
 
 export class ScheduleFileStore {
   private readonly schedulePath: string;

@@ -27,8 +27,3 @@ export interface RawLesson {
   end: string;
   subjects: Record<string, string[]>;
 }
-
-export interface RefreshResult {
-  changed: boolean;
-  updatedAt: string;
-}

@@ -1,46 +1,74 @@
 # ZAK Schedule Scraper
 
-Scrapes school schedule PDFs from gdansk.zak.edu.pl, parses them, and serves via REST API + SSR frontend.
+Scrapes school schedule PDFs from gdansk.zak.edu.pl, parses them, and serves as a static Next.js site.
 
 ## Commands
 
 ```bash
-npm run dev      # tsx watch — hot-reload dev server (port from .env, default 8000)
-npm run build    # tsc → dist/
-npm start        # node dist/index.js (production)
+npm run dev      # Next.js dev server with hot reload
+npm run build    # Scrape + generate static site → out/
+npm start        # Serve built site locally
 ```
 
 ## Architecture
 
 ```
 src/
-  index.ts          — Composition root: wires dependencies, starts Hono + cron
-  routes.ts         — HTTP routes: SSR pages (/, /all) + JSON API (/schedule/*)
-  scraper.ts        — ZakScraper class: fetches HTML, finds schedule article + PDF link
-  parser.ts         — ScheduleParser class: downloads PDF, extracts lessons via pdfjs-dist
-  scheduler.ts      — ScheduleRefresher class: orchestrates scraper → parser → store
-  store.ts          — ScheduleFileStore class: reads/writes JSON to data/
-  types.ts          — Shared interfaces (Lesson, ScheduleStore, Meta, etc.)
-  utils/
-    date.ts         — Date/time helpers (todayString, parseTimeToMinutes, etc.)
-    ics.ts          — Lesson → iCal event converter
-  views/
-    Layout.tsx      — HTML shell with CSS
-    TodayPage.tsx   — "/" — today's schedule
-    SchedulePage.tsx — "/all" — full schedule with date picker
-    components.tsx  — Shared React components (tables, selects, empty states, scripts)
+  app/
+    layout.tsx                  — Root layout (html, body, Tailwind)
+    globals.css                 — Tailwind imports + design tokens (@theme)
+    page.tsx                    — / (today's schedule)
+    _components/
+      TodayView.tsx             — Client view for /
+    all/
+      page.tsx                  — /all (full schedule with date picker)
+      _components/
+        AllScheduleView.tsx     — Client view for /all
+    archive/
+      page.tsx                  — /archive (archived schedules)
+      _components/
+        ArchiveView.tsx         — Client view for /archive
+  components/
+    ui/                         — Shared UI primitives
+      Header.tsx                — Page header with title + actions
+      MetaBar.tsx               — Update time, PDF link, ICS export
+      EmptyState.tsx            — Centered empty message
+      DayCard.tsx               — Day card with header + content
+      Select.tsx                — Styled select with custom arrow
+    schedule/                   — Schedule-specific shared components
+      ScheduleTable.tsx         — Single semester table
+      ScheduleGrid.tsx          — All semesters grid
+      SemesterSelect.tsx        — Semester filter (client)
+      DateSelect.tsx            — Date filter (client)
+  hooks/
+    useSemesterParam.ts         — Read ?semester from URL
+  lib/
+    data.ts                     — Data loader: scrapes if needed, reads JSON
+    format.ts                   — Date formatting (formatDate, weekdayFull, weekdayShort)
+    schedule.ts                 — Schedule utils (buildTimeSlots, extractSemesters, filterBySemester)
+    ics.ts                      — ICS generation + client-side download
+    scraper/
+      scraper.ts                — ZakScraper: fetches HTML, finds article + PDF link
+      parser.ts                 — ScheduleParser: downloads PDF, extracts lessons via pdfjs-dist
+      store.ts                  — ScheduleFileStore: reads/writes JSON to data/, handles archives
+      types.ts                  — Shared types (Lesson, ScheduleStore, Meta, RawLesson)
 data/
-  schedule.json     — Parsed schedule (auto-generated, gitignored)
-  meta.json         — Scrape metadata: lastPdfUrl, lastChecked, lastChanged
+  schedule.json                 — Current schedule (auto-generated, gitignored)
+  meta.json                     — Scrape metadata: lastPdfUrl, lastChecked, lastChanged
+  archive/                      — Archived schedules (schedule-YYYY-MM-DD.json)
 ```
 
 ## Key design decisions
 
-- **OOP + DI**: Classes for scraper, parser, store, refresher. Dependencies injected via constructors in index.ts.
-- **SSR React**: Pages rendered with `renderToString()` on the server. No client-side React bundle. Client JS is minimal vanilla (dropdown handlers, refresh button).
-- **All URL params in query string**: `?semester=5`, `?date=2026-03-15`. Dropdowns trigger page navigation, not client-side filtering.
+- **Static export**: `next build` scrapes → parses → generates static HTML in `out/`. No server at runtime.
+- **Scraping at build time**: `lib/data.ts` checks if data exists and is fresh (<1 hour). If not, scrapes automatically during build.
+- **Archiving**: Before saving a new schedule, the previous one is copied to `data/archive/schedule-{date}.json`.
+- **Client-side filtering**: Pages are Server Components that load data, then pass it to `"use client"` views. Semester/date filters read `useSearchParams` and filter client-side.
+- **ICS on client**: iCal files generated in the browser via `downloadICS()`, no server endpoint needed.
+- **Tailwind v4**: Design tokens defined via `@theme` in `globals.css` (surface, muted, border, border-light). No tailwind.config.
 - **semester is a number**: Stored as `number` in Lesson. Parsed from PDF labels like "semestr 5" → `5`.
 - **Two table layouts**: Grid (all semesters as columns) when no semester filter; simple table with Sala column when single semester selected.
+- **Page-specific components in `_components/`**: Components used only by one page live next to it. Shared components live in `src/components/`.
 
 ## PDF parsing details
 
@@ -56,30 +84,18 @@ The PDF from gdansk.zak.edu.pl has a specific structure that pdfjs-dist extracts
 ## Frontend
 
 - **Language**: Polish with proper diacritics (ą, ć, ę, ł, ń, ó, ś, ź, ż). No transliteration.
-- **Design**: Minimalist black & white. White background, dark text, gray borders. No bright colors.
-- **Pages**: `/` (today, focused) and `/all` (full schedule with date picker). "Cały plan" links between them.
-- Dates with lessons marked ● in date picker, empty dates marked ○.
+- **Design**: Minimalist black & white via Tailwind. Design tokens in `globals.css`.
+- **Pages**: `/` (today), `/all` (full schedule with date picker), `/archive` (archived schedules).
 
-## Cron
+## Deployment
 
-Every Sunday at 20:00 (`0 20 * * 0`): scrape → compare PDF URL → parse if changed → save.
-
-## API endpoints
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/` | SSR today page (`?semester=N`) |
-| GET | `/all` | SSR full schedule (`?semester=N&date=YYYY-MM-DD`) |
-| GET | `/schedule` | JSON full schedule (`?date=YYYY-MM-DD`) |
-| GET | `/schedule/today` | JSON today's lessons |
-| GET | `/schedule/next` | JSON next upcoming lesson |
-| GET | `/schedule/export.ics` | iCal export (`?semester=N`) |
-| POST | `/schedule/refresh` | Trigger scrape+parse manually |
+- **GitHub Pages**: `next build` outputs to `out/`, deploy via GitHub Actions.
+- **Cron via GitHub Actions**: Weekly workflow runs `npm run build` → deploy. No in-process cron.
 
 ## Rules
 
 - Do not use `pdf-parse` — it doesn't support ESM
 - Do not hardcode article URLs — the school posts new articles monthly with changing IDs
 - Do not add a database — JSON file storage is intentional
-- Do not add a client-side React bundle or hydration — SSR-only is intentional
 - `data/` directory is auto-created; don't commit schedule.json or meta.json
+- Path alias `@/*` maps to `./src/*`

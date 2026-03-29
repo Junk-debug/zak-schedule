@@ -1,6 +1,6 @@
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 import type { TextItem } from "pdfjs-dist/types/src/display/api.js";
-import type { Lesson, RawLesson } from "./types.js";
+import type { Lesson, RawLesson } from "./types";
 
 interface PdfTextItem {
   str: string;
