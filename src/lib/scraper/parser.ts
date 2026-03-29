@@ -29,14 +29,17 @@ export class ScheduleParser {
   private async extractRawLessons(pdfUrl: string): Promise<RawLesson[]> {
     const buffer = await this.fetchPdfBuffer(pdfUrl);
     const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
-    const result: RawLesson[] = [];
 
-    for (let p = 1; p <= pdf.numPages; p++) {
-      const pageLessons = await this.parsePage(pdf, p);
-      result.push(...pageLessons);
+    try {
+      const result: RawLesson[] = [];
+      for (let p = 1; p <= pdf.numPages; p++) {
+        const pageLessons = await this.parsePage(pdf, p);
+        result.push(...pageLessons);
+      }
+      return result;
+    } finally {
+      pdf.destroy();
     }
-
-    return result;
   }
 
   private async fetchPdfBuffer(url: string): Promise<ArrayBuffer> {
@@ -68,8 +71,9 @@ export class ScheduleParser {
       );
       const joinedText = sortedItems.map((t) => t.str.trim()).join(" ");
 
-      if (DATE_PATTERN.test(joinedText)) {
-        currentDate = joinedText.match(DATE_PATTERN)![0];
+      const dateMatch = joinedText.match(DATE_PATTERN);
+      if (dateMatch) {
+        currentDate = dateMatch[0];
         continue;
       }
 
@@ -83,7 +87,7 @@ export class ScheduleParser {
       }
 
       const match = joinedText.match(LESSON_PATTERN);
-      if (match && currentDate && colBoundaries) {
+      if (match?.[1] && match[2] && match[3] && currentDate && colBoundaries) {
         // Collect items from the lesson row AND any trailing data rows
         // (subject names and room info live on different Y-levels)
         const allItems = [...sortedItems];
@@ -114,9 +118,9 @@ export class ScheduleParser {
 
         result.push({
           date: currentDate,
-          lesson: +match[1]!,
-          start: match[2]!,
-          end: match[3]!,
+          lesson: +match[1],
+          start: match[2],
+          end: match[3],
           subjects,
         });
       }

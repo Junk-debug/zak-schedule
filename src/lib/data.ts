@@ -35,7 +35,9 @@ async function ensureFresh(): Promise<void> {
 
   // No data at all — must scrape synchronously
   if (!scrapePromise) {
-    scrapePromise = doScrape(meta, existing);
+    scrapePromise = doScrape(meta, existing).finally(() => {
+      scrapePromise = null;
+    });
   }
   await scrapePromise;
 }
