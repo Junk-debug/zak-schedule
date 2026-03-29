@@ -42,12 +42,14 @@ export function ArchiveView({ archives }: Props) {
       setSchedule(null);
       return;
     }
+    let cancelled = false;
     setLoading(true);
     fetch(`/data/archive/${selected}`)
       .then((r) => (r.ok ? r.json() : null))
-      .then((data) => setSchedule(data))
-      .catch(() => setSchedule(null))
-      .finally(() => setLoading(false));
+      .then((data) => { if (!cancelled) setSchedule(data); })
+      .catch(() => { if (!cancelled) setSchedule(null); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
   }, [selected]);
 
   const semesters = schedule ? extractSemesters(schedule.lessons) : [];

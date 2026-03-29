@@ -6,6 +6,7 @@ import { ScheduleFileStore } from "@/lib/scraper/store";
 
 const BASE_URL = "https://gdansk.zak.edu.pl";
 const DATA_DIR = path.resolve(process.cwd(), "data");
+const FRESHNESS_TTL = 60 * 60 * 1000; // 1 hour
 
 const store = new ScheduleFileStore(DATA_DIR);
 const scraper = new ZakScraper(BASE_URL);
@@ -21,7 +22,7 @@ async function ensureFresh(): Promise<void> {
 
   if (existing && meta?.lastChecked) {
     const age = Date.now() - new Date(meta.lastChecked).getTime();
-    if (age < 60 * 60 * 1000) {
+    if (age < FRESHNESS_TTL) {
       console.log("[data] Schedule is fresh, skipping scrape");
       return;
     }
