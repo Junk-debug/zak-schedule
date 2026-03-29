@@ -14,6 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
+      <head>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="438cab07-bab3-4486-9f37-d9d00b6237f7" />
+      </head>
       <body className="bg-white text-gray-900 min-h-screen font-sans">
         <NuqsAdapter>
           <div className="max-w-5xl mx-auto px-5 py-8">{children}</div>
