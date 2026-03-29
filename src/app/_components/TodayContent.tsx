@@ -18,6 +18,7 @@ interface Props {
   semesters: number[];
   semester: number | null;
   today: string;
+  activeLesson?: number | null;
   filters?: React.ReactNode;
 }
 
@@ -26,6 +27,7 @@ export function TodayContent({
   semesters,
   semester,
   today,
+  activeLesson,
   filters,
 }: Props) {
   if (!schedule) {
@@ -74,13 +76,13 @@ export function TodayContent({
 
       {relevantLessons.length > 0 && semester && (
         <DayCard date={today}>
-          <ScheduleTable lessons={relevantLessons} />
+          <ScheduleTable lessons={relevantLessons} activeLesson={activeLesson} />
         </DayCard>
       )}
 
       {relevantLessons.length > 0 && !semester && (
         <DayCard date={today}>
-          <ScheduleGrid slots={buildTimeSlots(todayLessons)} semesters={semesters} />
+          <ScheduleGrid slots={buildTimeSlots(todayLessons)} semesters={semesters} activeLesson={activeLesson} />
         </DayCard>
       )}
     </main>
