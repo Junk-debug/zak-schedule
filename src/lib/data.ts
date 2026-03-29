@@ -69,6 +69,9 @@ async function ensureFresh(): Promise<void> {
     console.log(`[data] Schedule updated: ${lessons.length} lessons`);
   } catch (err) {
     console.error("[data] Scrape failed:", err);
+    if (!existing) {
+      throw new Error(`Scrape failed and no existing data: ${err}`);
+    }
   }
 }
 
