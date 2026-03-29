@@ -10,7 +10,7 @@ import {
   buildTimeSlots,
   filterBySemester,
 } from "@/lib/schedule";
-import { formatDate, weekdayShort } from "@/lib/format";
+import { formatDate } from "@/lib/format";
 import { useSemesterParam } from "@/hooks/useSemesterParam";
 import { Header, HeaderLink } from "@/components/ui/Header";
 import { MetaBar } from "@/components/ui/MetaBar";
@@ -19,6 +19,7 @@ import { DayCard } from "@/components/ui/DayCard";
 import { ScheduleTable } from "@/components/schedule/ScheduleTable";
 import { ScheduleGrid } from "@/components/schedule/ScheduleGrid";
 import { SemesterSelect } from "@/components/schedule/SemesterSelect";
+import { ArchiveList } from "./ArchiveList";
 
 function dateFromFilename(filename: string): string {
   return filename.replace("schedule-", "").replace(".json", "");
@@ -51,59 +52,39 @@ export function ArchiveView({ archives }: Props) {
 
   const semesters = schedule ? extractSemesters(schedule.lessons) : [];
 
+  if (!selected) {
+    return (
+      <main>
+        <Header title="Archiwum planów zajęć">
+          <HeaderLink href="/">← Dziś</HeaderLink>
+          <HeaderLink href="/all" variant="secondary">Cały plan</HeaderLink>
+        </Header>
+
+        {archives.length === 0 ? (
+          <EmptyState><p>Brak archiwalnych planów.</p></EmptyState>
+        ) : (
+          <ArchiveList archives={archives} />
+        )}
+      </main>
+    );
+  }
+
   return (
     <main>
       <Header title="Archiwum planów zajęć">
-        {selected && schedule && (
-          <SemesterSelect semesters={semesters} value={semester} />
-        )}
+        {schedule && <SemesterSelect semesters={semesters} value={semester} />}
         <HeaderLink href="/">← Dziś</HeaderLink>
-        <HeaderLink href="/all" variant="secondary">
-          Cały plan
-        </HeaderLink>
+        <HeaderLink href="/all" variant="secondary">Cały plan</HeaderLink>
       </Header>
 
-      {archives.length === 0 && !selected && (
-        <EmptyState>
-          <p>Brak archiwalnych planów.</p>
-        </EmptyState>
-      )}
+      {loading && <EmptyState><p>Ładowanie...</p></EmptyState>}
 
-      {archives.length > 0 && !selected && (
-        <div className="flex flex-col rounded-lg border border-border overflow-hidden">
-          {archives.map((filename) => {
-            const date = dateFromFilename(filename);
-            return (
-              <Link
-                key={filename}
-                href={`/archive?file=${filename}`}
-                className="flex justify-between items-center px-4 py-3 bg-white text-gray-900 no-underline hover:bg-surface transition-colors border-t border-border first:border-t-0"
-              >
-                <span className="font-medium text-sm">
-                  {weekdayShort(date)} {formatDate(date)}
-                </span>
-                <span className="text-muted text-sm">→</span>
-              </Link>
-            );
-          })}
-        </div>
-      )}
-
-      {selected && loading && (
-        <EmptyState>
-          <p>Ładowanie...</p>
-        </EmptyState>
-      )}
-
-      {selected && !loading && schedule && (
+      {!loading && schedule && (
         <>
           <MetaBar updatedAt={schedule.updatedAt} pdfUrl={schedule.pdfUrl} />
 
           <div className="flex items-center gap-2.5 mb-4 flex-wrap">
-            <Link
-              href="/archive"
-              className="text-sm text-muted hover:text-gray-900 transition-colors"
-            >
+            <Link href="/archive" className="text-sm text-muted hover:text-gray-900 transition-colors">
               ← Lista archiwów
             </Link>
             <span className="text-sm text-muted px-2.5 py-1 border border-border rounded-md bg-surface">
@@ -127,10 +108,7 @@ export function ArchiveView({ archives }: Props) {
                 {semester ? (
                   <ScheduleTable lessons={dayLessons} />
                 ) : (
-                  <ScheduleGrid
-                    slots={buildTimeSlots(dayLessons)}
-                    semesters={semesters}
-                  />
+                  <ScheduleGrid slots={buildTimeSlots(dayLessons)} semesters={semesters} />
                 )}
               </DayCard>
             );
@@ -138,10 +116,8 @@ export function ArchiveView({ archives }: Props) {
         </>
       )}
 
-      {selected && !loading && !schedule && (
-        <EmptyState>
-          <p>Nie znaleziono archiwum: {selected}</p>
-        </EmptyState>
+      {!loading && !schedule && (
+        <EmptyState><p>Nie znaleziono archiwum: {selected}</p></EmptyState>
       )}
     </main>
   );
