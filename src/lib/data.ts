@@ -70,9 +70,9 @@ async function doScrape(meta: Awaited<ReturnType<typeof store.loadMeta>>, hasExi
 
   const now = new Date().toISOString();
 
-  if (meta && meta.lastPdfUrl === pdfUrl) {
+  if (meta?.lastPdfUrl === pdfUrl) {
     console.log("[data] Same PDF, updating lastChecked");
-    await store.saveMeta({ ...meta, lastChecked: now });
+    await store.saveMeta({ lastPdfUrl: meta.lastPdfUrl, lastChanged: meta.lastChanged, lastChecked: now });
     return;
   }
 

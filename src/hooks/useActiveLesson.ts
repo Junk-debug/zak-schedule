@@ -1,18 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getPolandMinutes, timeToMinutes } from "@/lib/poland-time";
 import type { Lesson } from "@/lib/scraper/types";
 
 export function useActiveLesson(lessons: Lesson[]): number | null {
+  const lessonsRef = useRef(lessons);
+  lessonsRef.current = lessons;
+
   const [active, setActive] = useState<number | null>(() => findActive(lessons));
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActive(findActive(lessons));
+      setActive(findActive(lessonsRef.current));
     }, 30_000);
     return () => clearInterval(interval);
-  }, [lessons]);
+  }, []);
 
   return active;
 }

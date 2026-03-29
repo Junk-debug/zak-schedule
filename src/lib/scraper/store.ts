@@ -3,6 +3,10 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import type { ScheduleStore, Meta } from "./types";
 
+function isFileNotFound(err: unknown): boolean {
+  return err instanceof Error && "code" in err && (err as NodeJS.ErrnoException).code === "ENOENT";
+}
+
 export class ScheduleFileStore {
   private readonly schedulePath: string;
   private readonly metaPath: string;
@@ -30,8 +34,9 @@ export class ScheduleFileStore {
     try {
       const raw = await readFile(this.schedulePath, "utf-8");
       return JSON.parse(raw) as ScheduleStore;
-    } catch {
-      return null;
+    } catch (err: unknown) {
+      if (isFileNotFound(err)) return null;
+      throw err;
     }
   }
 
@@ -45,7 +50,12 @@ export class ScheduleFileStore {
     if (!current) return;
 
     const date = current.updatedAt.slice(0, 10);
-    const archivePath = path.join(this.archiveDir, `schedule-${date}.json`);
+    let archivePath = path.join(this.archiveDir, `schedule-${date}.json`);
+
+    if (existsSync(archivePath)) {
+      const time = current.updatedAt.slice(11, 19).replace(/:/g, "");
+      archivePath = path.join(this.archiveDir, `schedule-${date}-${time}.json`);
+    }
 
     if (!existsSync(archivePath)) {
       await copyFile(this.schedulePath, archivePath);
@@ -68,8 +78,9 @@ export class ScheduleFileStore {
     try {
       const raw = await readFile(resolved, "utf-8");
       return JSON.parse(raw) as ScheduleStore;
-    } catch {
-      return null;
+    } catch (err: unknown) {
+      if (isFileNotFound(err)) return null;
+      throw err;
     }
   }
 
@@ -77,8 +88,9 @@ export class ScheduleFileStore {
     try {
       const raw = await readFile(this.metaPath, "utf-8");
       return JSON.parse(raw) as Meta;
-    } catch {
-      return null;
+    } catch (err: unknown) {
+      if (isFileNotFound(err)) return null;
+      throw err;
     }
   }
 

@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "next dev --port 5173",
     "build": "next build",
-    "start": "npx serve out -l 5173"
+    "start": "npx serve out -l 5173",
+    "type-check": "tsc --noEmit",
+    "lint": "next lint"
   },
   "keywords": [],
   "author": "",
