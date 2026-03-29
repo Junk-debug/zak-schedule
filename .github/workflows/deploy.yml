@@ -6,7 +6,7 @@ on:
   workflow_dispatch: # manual trigger
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -20,6 +20,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Restore data from data branch
+        run: |
+          if git ls-remote --exit-code origin data >/dev/null 2>&1; then
+            git fetch origin data
+            git checkout origin/data -- data/
+          fi
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -29,6 +36,36 @@ jobs:
       - run: npm run build
         env:
           BASE_PATH: /zak-schedule
+
+      - name: Save data to data branch
+        run: |
+          if [ ! -d data ]; then exit 0; fi
+          tmp=$(mktemp -d)
+          cp -r data/* "$tmp/"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code origin data >/dev/null 2>&1; then
+            git fetch origin data
+            git worktree add /tmp/data-branch data
+          else
+            git worktree add --detach /tmp/data-branch
+            cd /tmp/data-branch
+            git checkout --orphan data
+            git rm -rf .
+            cd -
+          fi
+          mkdir -p /tmp/data-branch/data
+          cp -r "$tmp"/* /tmp/data-branch/data/
+          cd /tmp/data-branch
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No data changes to commit"
+          else
+            git commit -m "Update schedule data [skip ci]"
+            git push origin data
+          fi
+          cd -
+          git worktree remove /tmp/data-branch
 
       - uses: actions/upload-pages-artifact@v3
         with:
