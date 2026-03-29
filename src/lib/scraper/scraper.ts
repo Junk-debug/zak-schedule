@@ -5,6 +5,7 @@ export class ZakScraper {
 
   async findScheduleArticleUrl(): Promise<string | null> {
     const res = await fetch(`${this.baseUrl}/aktualnosci`);
+    if (!res.ok) throw new Error(`Failed to fetch news page: ${res.status}`);
     const html = await res.text();
     const $ = cheerio.load(html);
 
@@ -25,6 +26,7 @@ export class ZakScraper {
 
   async findPdfUrl(articleUrl: string): Promise<string | null> {
     const res = await fetch(articleUrl);
+    if (!res.ok) throw new Error(`Failed to fetch article: ${res.status}`);
     const html = await res.text();
     const $ = cheerio.load(html);
 

@@ -41,6 +41,7 @@ export class ScheduleParser {
 
   private async fetchPdfBuffer(url: string): Promise<ArrayBuffer> {
     const res = await fetch(url);
+    if (!res.ok) throw new Error(`Failed to fetch PDF: ${res.status}`);
     return res.arrayBuffer();
   }
 
