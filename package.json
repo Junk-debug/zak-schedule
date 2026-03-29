@@ -1,0 +1,33 @@
+{
+  "name": "zak-scrapper",
+  "version": "2.0.0",
+  "description": "ZAK school schedule scraper and API",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc && cp src/views/*.css dist/views/",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hono/node-server": "^1.19.11",
+    "cheerio": "^1.2.0",
+    "dotenv": "^17.3.1",
+    "hono": "^4.12.9",
+    "ics": "^3.11.0",
+    "node-cron": "^4.2.1",
+    "pdfjs-dist": "^5.5.207",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}

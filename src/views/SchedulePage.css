@@ -1,0 +1,12 @@
+.nav-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.date-select {
+  min-width: 200px;
+  font-size: .875rem;
+}
