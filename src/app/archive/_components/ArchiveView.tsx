@@ -1,9 +1,7 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import type { ScheduleStore } from "@/lib/scraper/types";
+import { useState } from "react";
+import type { ArchiveEntry } from "../page";
 import {
   extractSemesters,
   extractDates,
@@ -18,55 +16,27 @@ import { DayCard } from "@/components/ui/DayCard";
 import { Select } from "@/components/ui/Select";
 import { ScheduleTable } from "@/components/schedule/ScheduleTable";
 import { ScheduleGrid } from "@/components/schedule/ScheduleGrid";
-import { ArchiveList } from "./ArchiveList";
 
 function dateFromFilename(filename: string): string {
   return filename.replace("schedule-", "").replace(".json", "");
 }
 
 interface Props {
-  archives: string[];
+  entries: ArchiveEntry[];
 }
 
-export function ArchiveView({ archives }: Props) {
-  const searchParams = useSearchParams();
-  const selected = searchParams.get("file");
-  const initialSemester = searchParams.get("semester") ? Number(searchParams.get("semester")) : null;
-  const [semester, setSemester] = useState<number | null>(initialSemester);
+export function ArchiveView({ entries }: Props) {
+  const [semester, setSemester] = useState<number | null>(null);
 
-  const [schedule, setSchedule] = useState<ScheduleStore | null>(null);
-  const [loading, setLoading] = useState(false);
+  const allSemesters = [
+    ...new Set(entries.flatMap((e) => extractSemesters(e.schedule.lessons))),
+  ].sort((a, b) => a - b);
 
-  useEffect(() => {
-    if (!selected) {
-      setSchedule(null);
-      return;
-    }
-    const controller = new AbortController();
-    setLoading(true);
-    fetch(`/data/archive/${selected}`, { signal: controller.signal })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => setSchedule(data))
-      .catch((err) => { if (!controller.signal.aborted) setSchedule(null); })
-      .finally(() => { if (!controller.signal.aborted) setLoading(false); });
-    return () => controller.abort();
-  }, [selected]);
-
-  const semesters = schedule ? extractSemesters(schedule.lessons) : [];
-
-  function handleSemesterChange(val: string) {
-    setSemester(val ? Number(val) : null);
-  }
-
-  if (!selected) {
+  if (entries.length === 0) {
     return (
       <main>
         <Header active="/archive" semester={semester} />
-        {archives.length === 0 ? (
-          <EmptyState><p>Brak archiwalnych planów.</p></EmptyState>
-        ) : (
-          <ArchiveList archives={archives} />
-        )}
+        <EmptyState><p>Brak archiwalnych planów.</p></EmptyState>
       </main>
     );
   }
@@ -75,56 +45,54 @@ export function ArchiveView({ archives }: Props) {
     <main>
       <Header active="/archive" semester={semester} />
 
-      {loading && <EmptyState><p>Ładowanie...</p></EmptyState>}
+      <div className="flex items-center gap-2.5 mb-4 flex-wrap">
+        <Select
+          value={semester?.toString() ?? ""}
+          onChange={(val) => setSemester(val ? Number(val) : null)}
+          options={[
+            { value: "", label: "Wszystkie semestry" },
+            ...allSemesters.map((s) => ({ value: s.toString(), label: `Semestr ${s}` })),
+          ]}
+        />
+      </div>
 
-      {!loading && schedule && (
-        <>
-          <MetaBar updatedAt={schedule.updatedAt} pdfUrl={schedule.pdfUrl} />
+      {entries.map(({ file, schedule }) => {
+        const semesters = extractSemesters(schedule.lessons);
+        const dates = extractDates(schedule.lessons);
+        const filtered = filterBySemester(schedule.lessons, semester);
+        if (filtered.length === 0) return null;
 
-          <div className="flex items-center gap-2.5 mb-4 flex-wrap">
-            <Link href="/archive" className="text-sm text-muted hover:text-gray-900 transition-colors">
-              ← Lista archiwów
-            </Link>
-            <span className="text-sm text-muted px-2.5 py-1 border border-border rounded-md bg-surface">
-              Archiwum z {formatDate(dateFromFilename(selected))}
-            </span>
-            <Select
-              value={semester?.toString() ?? ""}
-              onChange={handleSemesterChange}
-              options={[
-                { value: "", label: "Wszystkie semestry" },
-                ...semesters.map((s) => ({ value: s.toString(), label: `Semestr ${s}` })),
-              ]}
-            />
-          </div>
+        return (
+          <section key={file} className="mb-8">
+            <h2 className="text-sm font-medium text-muted mb-2">
+              Archiwum z {formatDate(dateFromFilename(file))}
+            </h2>
+            <MetaBar updatedAt={schedule.updatedAt} pdfUrl={schedule.pdfUrl} />
 
-          {extractDates(schedule.lessons).map((d) => {
-            const dayLessons = filterBySemester(
-              schedule.lessons.filter((l) => l.date === d),
-              semester,
-            );
-            if (dayLessons.length === 0) return null;
+            {dates.map((d) => {
+              const dayLessons = filterBySemester(
+                schedule.lessons.filter((l) => l.date === d),
+                semester,
+              );
+              if (dayLessons.length === 0) return null;
 
-            return (
-              <DayCard
-                key={d}
-                date={d}
-                label={semester ? `Semestr ${semester}` : "Wszystkie semestry"}
-              >
-                {semester ? (
-                  <ScheduleTable lessons={dayLessons} />
-                ) : (
-                  <ScheduleGrid slots={buildTimeSlots(dayLessons)} semesters={semesters} />
-                )}
-              </DayCard>
-            );
-          })}
-        </>
-      )}
-
-      {!loading && !schedule && (
-        <EmptyState><p>Nie znaleziono archiwum: {selected}</p></EmptyState>
-      )}
+              return (
+                <DayCard
+                  key={d}
+                  date={d}
+                  label={semester ? `Semestr ${semester}` : "Wszystkie semestry"}
+                >
+                  {semester ? (
+                    <ScheduleTable lessons={dayLessons} />
+                  ) : (
+                    <ScheduleGrid slots={buildTimeSlots(dayLessons)} semesters={semesters} />
+                  )}
+                </DayCard>
+              );
+            })}
+          </section>
+        );
+      })}
     </main>
   );
 }

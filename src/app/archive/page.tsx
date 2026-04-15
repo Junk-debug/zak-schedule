@@ -1,27 +1,33 @@
 import { Suspense } from "react";
-import { listArchives } from "@/lib/data";
+import { listArchives, loadArchive } from "@/lib/data";
+import type { ScheduleStore } from "@/lib/scraper/types";
 import { Header } from "@/components/ui/Header";
 import { EmptyState } from "@/components/ui/EmptyState";
-import { ArchiveList } from "./_components/ArchiveList";
 import { ArchiveView } from "./_components/ArchiveView";
 
+export interface ArchiveEntry {
+  file: string;
+  schedule: ScheduleStore;
+}
+
 export default async function ArchivePage() {
-  const archives = await listArchives();
+  const files = await listArchives();
+  const entries: ArchiveEntry[] = [];
+  for (const file of files) {
+    const schedule = await loadArchive(file);
+    if (schedule) entries.push({ file, schedule });
+  }
 
   return (
     <Suspense
       fallback={
         <main>
           <Header active="/archive" />
-          {archives.length === 0 ? (
-            <EmptyState><p>Brak archiwalnych planów.</p></EmptyState>
-          ) : (
-            <ArchiveList archives={archives} />
-          )}
+          <EmptyState><p>Ładowanie archiwów...</p></EmptyState>
         </main>
       }
     >
-      <ArchiveView archives={archives} />
+      <ArchiveView entries={entries} />
     </Suspense>
   );
 }
