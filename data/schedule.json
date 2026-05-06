@@ -1,135 +1,117 @@
 {
-  "updatedAt": "2026-04-15T11:47:02.329Z",
-  "pdfUrl": "https://gdansk.zak.edu.pl/assets/files/articles/25790_1776251844_plan-liceum-kwiecien-2026.pdf",
+  "updatedAt": "2026-05-06T22:58:16.246Z",
+  "pdfUrl": "https://gdansk.zak.edu.pl/assets/files/articles/25790_1778068758_plan-liceum-maj-2026.pdf",
   "lessons": [
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 1,
       "start": "08:00",
       "end": "08:45",
-      "semester": 4,
-      "subject": "fizyka",
-      "room": "0/6"
+      "semester": 2,
+      "subject": "Matematyka",
+      "room": "1/10"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 1,
       "start": "08:00",
       "end": "08:45",
-      "semester": 6,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 1,
-      "start": "08:00",
-      "end": "08:45",
-      "semester": 8,
+      "semester": 7,
       "subject": "Język polski",
       "room": "0/7"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 2,
       "start": "08:50",
       "end": "09:35",
-      "semester": 1,
+      "semester": 2,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 3,
       "subject": "Język angielski",
       "room": "1/5"
     },
     {
-      "date": "2026-04-18",
-      "lesson": 2,
-      "start": "08:50",
-      "end": "09:35",
-      "semester": 4,
-      "subject": "fizyka",
-      "room": "0/6"
-    },
-    {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 2,
       "start": "08:50",
       "end": "09:35",
       "semester": 6,
-      "subject": "Matematyka",
-      "room": "1/10"
+      "subject": "informatyka",
+      "room": "0/6"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 2,
       "start": "08:50",
       "end": "09:35",
-      "semester": 8,
+      "semester": 7,
       "subject": "Język polski",
       "room": "0/7"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 3,
       "start": "09:40",
       "end": "10:25",
-      "semester": 1,
+      "semester": 2,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 3,
       "subject": "Język angielski",
       "room": "1/5"
     },
     {
-      "date": "2026-04-18",
-      "lesson": 3,
-      "start": "09:40",
-      "end": "10:25",
-      "semester": 4,
-      "subject": "Geografia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 3,
-      "start": "09:40",
-      "end": "10:25",
-      "semester": 5,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 3,
       "start": "09:40",
       "end": "10:25",
       "semester": 6,
-      "subject": "fizyka",
+      "subject": "informatyka",
       "room": "0/6"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 3,
       "start": "09:40",
       "end": "10:25",
-      "semester": 8,
+      "semester": 7,
       "subject": "Język polski",
       "room": "0/7"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 4,
       "start": "10:30",
       "end": "11:15",
-      "semester": 1,
-      "subject": "Język polski",
-      "room": "0/7"
+      "semester": 2,
+      "subject": "informatyka",
+      "room": "0/6"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 4,
       "start": "10:30",
       "end": "11:15",
-      "semester": 4,
+      "semester": 3,
       "subject": "Geografia",
-      "room": "1/3"
+      "room": "1/1"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 4,
       "start": "10:30",
       "end": "11:15",
@@ -138,115 +120,115 @@
       "room": "1/10"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 4,
       "start": "10:30",
       "end": "11:15",
       "semester": 6,
-      "subject": "fizyka",
-      "room": "0/6"
+      "subject": "Język polski",
+      "room": "0/7"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 4,
       "start": "10:30",
       "end": "11:15",
-      "semester": 8,
+      "semester": 7,
       "subject": "Język angielski",
       "room": "1/5"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 5,
       "start": "11:20",
       "end": "12:05",
-      "semester": 1,
-      "subject": "Język polski",
-      "room": "0/7"
+      "semester": 2,
+      "subject": "informatyka",
+      "room": "0/6"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 5,
       "start": "11:20",
       "end": "12:05",
-      "semester": 4,
-      "subject": "Język angielski",
-      "room": "1/10"
+      "semester": 3,
+      "subject": "Geografia",
+      "room": "1/1"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 5,
       "start": "11:20",
       "end": "12:05",
       "semester": 5,
-      "subject": "Chemia",
-      "room": "0/6"
+      "subject": "Matematyka",
+      "room": "1/10"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 5,
       "start": "11:20",
       "end": "12:05",
       "semester": 6,
-      "subject": "Geografia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 5,
-      "start": "11:20",
-      "end": "12:05",
-      "semester": 8,
-      "subject": "Język angielski",
-      "room": "1/5"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 1,
       "subject": "Język polski",
       "room": "0/7"
     },
     {
-      "date": "2026-04-18",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 4,
-      "subject": "Język angielski",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 5,
-      "subject": "Chemia",
-      "room": "0/6"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 6,
-      "subject": "Geografia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 8,
+      "date": "2026-05-09",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 7,
       "subject": "Język angielski",
       "room": "1/5"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 1,
+      "subject": "Matematyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 2,
+      "subject": "Język angielski",
+      "room": "1/5"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 5,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 6,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 7,
+      "subject": "Geografia",
+      "room": "1/1"
+    },
+    {
+      "date": "2026-05-09",
       "lesson": 7,
       "start": "13:00",
       "end": "13:45",
@@ -255,16 +237,16 @@
       "room": "0/6"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 7,
       "start": "13:00",
       "end": "13:45",
-      "semester": 4,
+      "semester": 2,
       "subject": "Język angielski",
-      "room": "1/10"
+      "room": "1/5"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 7,
       "start": "13:00",
       "end": "13:45",
@@ -273,34 +255,313 @@
       "room": "0/7"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 7,
       "start": "13:00",
       "end": "13:45",
       "semester": 7,
       "subject": "Geografia",
-      "room": "1/3"
+      "room": "1/1"
     },
     {
-      "date": "2026-04-18",
-      "lesson": 7,
-      "start": "13:00",
-      "end": "13:45",
-      "semester": 8,
-      "subject": "Matematyka",
-      "room": "0/5"
-    },
-    {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
       "lesson": 8,
       "start": "13:50",
       "end": "14:35",
       "semester": 1,
-      "subject": "Matematyka",
+      "subject": "fizyka",
       "room": "0/6"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-09",
+      "lesson": 8,
+      "start": "13:50",
+      "end": "14:35",
+      "semester": 2,
+      "subject": "Geografia",
+      "room": "1/1"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 8,
+      "start": "13:50",
+      "end": "14:35",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 9,
+      "start": "14:40",
+      "end": "15:25",
+      "semester": 1,
+      "subject": "fizyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 9,
+      "start": "14:40",
+      "end": "15:25",
+      "semester": 2,
+      "subject": "Geografia",
+      "room": "1/1"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 9,
+      "start": "14:40",
+      "end": "15:25",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 5,
+      "subject": "Chemia",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 11,
+      "start": "16:20",
+      "end": "17:05",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 11,
+      "start": "16:20",
+      "end": "17:05",
+      "semester": 5,
+      "subject": "Chemia",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-09",
+      "lesson": 12,
+      "start": "17:10",
+      "end": "17:55",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 1,
+      "start": "08:00",
+      "end": "08:45",
+      "semester": 3,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 3,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 6,
+      "subject": "informatyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 3,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 6,
+      "subject": "informatyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 2,
+      "subject": "Chemia",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 3,
+      "subject": "Historia",
+      "room": "0/5"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 6,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 2,
+      "subject": "Chemia",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 3,
+      "subject": "Historia",
+      "room": "0/5"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 6,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 2,
+      "subject": "Chemia",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 3,
+      "subject": "Historia",
+      "room": "0/5"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 6,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 1,
+      "subject": "fizyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 2,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 6,
+      "subject": "Historia",
+      "room": "0/5"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 7,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 8,
+      "start": "13:50",
+      "end": "14:35",
+      "semester": 1,
+      "subject": "fizyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-10",
       "lesson": 8,
       "start": "13:50",
       "end": "14:35",
@@ -309,43 +570,34 @@
       "room": "1/10"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-10",
       "lesson": 8,
       "start": "13:50",
       "end": "14:35",
-      "semester": 5,
-      "subject": "Język polski",
-      "room": "0/7"
+      "semester": 6,
+      "subject": "Historia",
+      "room": "0/5"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-10",
       "lesson": 8,
       "start": "13:50",
       "end": "14:35",
       "semester": 7,
-      "subject": "Geografia",
-      "room": "1/3"
+      "subject": "Język polski",
+      "room": "0/7"
     },
     {
-      "date": "2026-04-18",
-      "lesson": 8,
-      "start": "13:50",
-      "end": "14:35",
-      "semester": 8,
-      "subject": "Matematyka",
-      "room": "0/5"
-    },
-    {
-      "date": "2026-04-18",
+      "date": "2026-05-10",
       "lesson": 9,
       "start": "14:40",
       "end": "15:25",
       "semester": 1,
-      "subject": "Matematyka",
+      "subject": "fizyka",
       "room": "0/6"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-10",
       "lesson": 9,
       "start": "14:40",
       "end": "15:25",
@@ -354,232 +606,790 @@
       "room": "1/10"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-10",
       "lesson": 9,
       "start": "14:40",
       "end": "15:25",
-      "semester": 5,
-      "subject": "Język polski",
-      "room": "0/7"
+      "semester": 6,
+      "subject": "Historia",
+      "room": "0/5"
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-05-10",
       "lesson": 9,
       "start": "14:40",
       "end": "15:25",
       "semester": 7,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 1,
+      "subject": "informatyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 2,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 6,
+      "subject": "Historia",
+      "room": "0/5"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 7,
       "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 11,
+      "start": "16:20",
+      "end": "17:05",
+      "semester": 2,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 11,
+      "start": "16:20",
+      "end": "17:05",
+      "semester": 7,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 12,
+      "start": "17:10",
+      "end": "17:55",
+      "semester": 2,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-10",
+      "lesson": 12,
+      "start": "17:10",
+      "end": "17:55",
+      "semester": 7,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-16",
+      "lesson": 1,
+      "start": "08:00",
+      "end": "08:45",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-16",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-16",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-16",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-16",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-16",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-16",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 2,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-16",
+      "lesson": 8,
+      "start": "13:50",
+      "end": "14:35",
+      "semester": 2,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-16",
+      "lesson": 9,
+      "start": "14:40",
+      "end": "15:25",
+      "semester": 2,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-16",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 2,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-17",
+      "lesson": 1,
+      "start": "08:00",
+      "end": "08:45",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-17",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-17",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-17",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-17",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-17",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-17",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 1,
+      "start": "08:00",
+      "end": "08:45",
+      "semester": 3,
+      "subject": "fizyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 1,
+      "start": "08:00",
+      "end": "08:45",
+      "semester": 6,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 1,
+      "start": "08:00",
+      "end": "08:45",
+      "semester": 7,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 3,
+      "subject": "Geografia",
+      "room": "1/1"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 5,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 6,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 7,
+      "subject": "Język angielski",
+      "room": "1/5"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 3,
+      "subject": "Geografia",
+      "room": "1/1"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 5,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 6,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 7,
+      "subject": "Język angielski",
+      "room": "1/5"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 1,
+      "subject": "Język angielski",
+      "room": "1/5"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 3,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 5,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 6,
+      "subject": "informatyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 7,
+      "subject": "Geografia",
+      "room": "1/1"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 1,
+      "subject": "Język angielski",
+      "room": "1/5"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 3,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 5,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 6,
+      "subject": "informatyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 7,
+      "subject": "Geografia",
+      "room": "1/1"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 1,
+      "subject": "Matematyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 2,
+      "subject": "Język angielski",
+      "room": "1/5"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 3,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 5,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 7,
+      "subject": "Geografia",
+      "room": "1/1"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 1,
+      "subject": "Matematyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 2,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 3,
+      "subject": "Język angielski",
+      "room": "1/5"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 5,
+      "subject": "Geografia",
+      "room": "1/1"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 8,
+      "start": "13:50",
+      "end": "14:35",
+      "semester": 1,
+      "subject": "fizyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 8,
+      "start": "13:50",
+      "end": "14:35",
+      "semester": 2,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 8,
+      "start": "13:50",
+      "end": "14:35",
+      "semester": 3,
+      "subject": "Język angielski",
+      "room": "1/5"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 8,
+      "start": "13:50",
+      "end": "14:35",
+      "semester": 5,
+      "subject": "Geografia",
+      "room": "1/1"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 9,
+      "start": "14:40",
+      "end": "15:25",
+      "semester": 1,
+      "subject": "fizyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 9,
+      "start": "14:40",
+      "end": "15:25",
+      "semester": 2,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 9,
+      "start": "14:40",
+      "end": "15:25",
+      "semester": 3,
+      "subject": "Język angielski",
+      "room": "1/5"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 2,
+      "subject": "informatyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 3,
+      "subject": "Język angielski",
+      "room": "1/5"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 11,
+      "start": "16:20",
+      "end": "17:05",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 11,
+      "start": "16:20",
+      "end": "17:05",
+      "semester": 2,
+      "subject": "informatyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 12,
+      "start": "17:10",
+      "end": "17:55",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-23",
+      "lesson": 12,
+      "start": "17:10",
+      "end": "17:55",
+      "semester": 2,
+      "subject": "informatyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 1,
+      "start": "08:00",
+      "end": "08:45",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 1,
+      "start": "08:00",
+      "end": "08:45",
+      "semester": 5,
+      "subject": "Język angielski",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 2,
+      "subject": "Biologia",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 3,
+      "subject": "Historia",
+      "room": "0/5"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 5,
+      "subject": "Język angielski",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 2,
+      "start": "08:50",
+      "end": "09:35",
+      "semester": 6,
+      "subject": "fizyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 1,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 2,
+      "subject": "Biologia",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 3,
+      "subject": "Historia",
+      "room": "0/5"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 5,
+      "subject": "Język angielski",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 3,
+      "start": "09:40",
+      "end": "10:25",
+      "semester": 6,
+      "subject": "fizyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 1,
+      "subject": "Historia",
+      "room": "1/3"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 2,
+      "subject": "informatyka",
+      "room": "0/6"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 3,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 4,
+      "start": "10:30",
+      "end": "11:15",
+      "semester": 5,
+      "subject": "Biologia",
       "room": ""
     },
     {
-      "date": "2026-04-18",
-      "lesson": 9,
-      "start": "14:40",
-      "end": "15:25",
-      "semester": 8,
-      "subject": "Geografia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 10,
-      "start": "15:30",
-      "end": "16:15",
-      "semester": 2,
-      "subject": "Chemia",
-      "room": "0/6"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 10,
-      "start": "15:30",
-      "end": "16:15",
-      "semester": 5,
-      "subject": "Język angielski",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 10,
-      "start": "15:30",
-      "end": "16:15",
-      "semester": 7,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 10,
-      "start": "15:30",
-      "end": "16:15",
-      "semester": 8,
-      "subject": "Geografia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 11,
-      "start": "16:20",
-      "end": "17:05",
-      "semester": 2,
-      "subject": "Chemia",
-      "room": "0/6"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 11,
-      "start": "16:20",
-      "end": "17:05",
-      "semester": 5,
-      "subject": "Język angielski",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 11,
-      "start": "16:20",
-      "end": "17:05",
-      "semester": 7,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 12,
-      "start": "17:10",
-      "end": "17:55",
-      "semester": 5,
-      "subject": "Język angielski",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-18",
-      "lesson": 12,
-      "start": "17:10",
-      "end": "17:55",
-      "semester": 7,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 1,
-      "start": "08:00",
-      "end": "08:45",
-      "semester": 6,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 1,
-      "start": "08:00",
-      "end": "08:45",
-      "semester": 7,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 1,
-      "start": "08:00",
-      "end": "08:45",
-      "semester": 8,
-      "subject": "Geografia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 2,
-      "start": "08:50",
-      "end": "09:35",
-      "semester": 3,
-      "subject": "Historia",
-      "room": "0/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 2,
-      "start": "08:50",
-      "end": "09:35",
-      "semester": 6,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 2,
-      "start": "08:50",
-      "end": "09:35",
-      "semester": 7,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 2,
-      "start": "08:50",
-      "end": "09:35",
-      "semester": 8,
-      "subject": "Matematyka",
-      "room": "1/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 3,
-      "start": "09:40",
-      "end": "10:25",
-      "semester": 3,
-      "subject": "Historia",
-      "room": "0/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 3,
-      "start": "09:40",
-      "end": "10:25",
-      "semester": 6,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 3,
-      "start": "09:40",
-      "end": "10:25",
-      "semester": 7,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 3,
-      "start": "09:40",
-      "end": "10:25",
-      "semester": 8,
-      "subject": "Matematyka",
-      "room": "1/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 4,
-      "start": "10:30",
-      "end": "11:15",
-      "semester": 2,
-      "subject": "Historia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 4,
-      "start": "10:30",
-      "end": "11:15",
-      "semester": 3,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-19",
+      "date": "2026-05-24",
       "lesson": 4,
       "start": "10:30",
       "end": "11:15",
@@ -588,427 +1398,211 @@
       "room": "0/5"
     },
     {
-      "date": "2026-04-19",
-      "lesson": 4,
-      "start": "10:30",
-      "end": "11:15",
-      "semester": 7,
-      "subject": "Geografia",
-      "room": "1/1"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 4,
-      "start": "10:30",
-      "end": "11:15",
-      "semester": 8,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-19",
+      "date": "2026-05-24",
       "lesson": 5,
       "start": "11:20",
       "end": "12:05",
-      "semester": 2,
-      "subject": "Historia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 5,
-      "start": "11:20",
-      "end": "12:05",
-      "semester": 3,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 5,
-      "start": "11:20",
-      "end": "12:05",
-      "semester": 6,
-      "subject": "Historia",
-      "room": "0/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 5,
-      "start": "11:20",
-      "end": "12:05",
-      "semester": 7,
-      "subject": "Geografia",
-      "room": "1/1"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 5,
-      "start": "11:20",
-      "end": "12:05",
-      "semester": 8,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 2,
-      "subject": "Historia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 3,
-      "subject": "fizyka",
-      "room": "0/6"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 5,
-      "subject": "Geografia",
-      "room": "1/1"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 6,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 7,
-      "subject": "Historia",
-      "room": "0/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 6,
-      "start": "12:10",
-      "end": "12:55",
-      "semester": 8,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 7,
-      "start": "13:00",
-      "end": "13:45",
       "semester": 1,
       "subject": "Historia",
-      "room": "1/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 7,
-      "start": "13:00",
-      "end": "13:45",
-      "semester": 2,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 7,
-      "start": "13:00",
-      "end": "13:45",
-      "semester": 3,
-      "subject": "fizyka",
-      "room": "0/6"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 7,
-      "start": "13:00",
-      "end": "13:45",
-      "semester": 4,
-      "subject": "Geografia",
-      "room": "1/1"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 7,
-      "start": "13:00",
-      "end": "13:45",
-      "semester": 5,
-      "subject": "Biologia",
       "room": "1/3"
     },
     {
-      "date": "2026-04-19",
-      "lesson": 7,
-      "start": "13:00",
-      "end": "13:45",
-      "semester": 6,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 7,
-      "start": "13:00",
-      "end": "13:45",
-      "semester": 7,
-      "subject": "Historia",
-      "room": "0/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 8,
-      "start": "13:50",
-      "end": "14:35",
-      "semester": 1,
-      "subject": "Historia",
-      "room": "1/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 8,
-      "start": "13:50",
-      "end": "14:35",
+      "date": "2026-05-24",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
       "semester": 2,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 8,
-      "start": "13:50",
-      "end": "14:35",
-      "semester": 3,
-      "subject": "fizyka",
-      "room": "0/6"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 8,
-      "start": "13:50",
-      "end": "14:35",
-      "semester": 4,
-      "subject": "Geografia",
-      "room": "1/1"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 8,
-      "start": "13:50",
-      "end": "14:35",
-      "semester": 5,
-      "subject": "Biologia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 8,
-      "start": "13:50",
-      "end": "14:35",
-      "semester": 6,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 8,
-      "start": "13:50",
-      "end": "14:35",
-      "semester": 7,
-      "subject": "Historia",
-      "room": "0/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 9,
-      "start": "14:40",
-      "end": "15:25",
-      "semester": 1,
-      "subject": "Historia",
-      "room": "1/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 9,
-      "start": "14:40",
-      "end": "15:25",
-      "semester": 2,
-      "subject": "Język polski",
-      "room": "0/7"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 9,
-      "start": "14:40",
-      "end": "15:25",
-      "semester": 3,
-      "subject": "fizyka",
-      "room": "0/6"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 9,
-      "start": "14:40",
-      "end": "15:25",
-      "semester": 4,
-      "subject": "Historia",
-      "room": "0/5"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 9,
-      "start": "14:40",
-      "end": "15:25",
-      "semester": 5,
-      "subject": "Biologia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 9,
-      "start": "14:40",
-      "end": "15:25",
-      "semester": 6,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 10,
-      "start": "15:30",
-      "end": "16:15",
-      "semester": 1,
       "subject": "informatyka",
       "room": "0/6"
     },
     {
-      "date": "2026-04-19",
-      "lesson": 10,
-      "start": "15:30",
-      "end": "16:15",
-      "semester": 2,
-      "subject": "Biologia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 10,
-      "start": "15:30",
-      "end": "16:15",
+      "date": "2026-05-24",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
       "semester": 3,
       "subject": "Język polski",
       "room": "0/7"
     },
     {
-      "date": "2026-04-19",
-      "lesson": 10,
-      "start": "15:30",
-      "end": "16:15",
-      "semester": 4,
+      "date": "2026-05-24",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 5,
+      "subject": "Biologia",
+      "room": ""
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 5,
+      "start": "11:20",
+      "end": "12:05",
+      "semester": 6,
       "subject": "Historia",
       "room": "0/5"
     },
     {
-      "date": "2026-04-19",
-      "lesson": 10,
-      "start": "15:30",
-      "end": "16:15",
-      "semester": 5,
-      "subject": "Matematyka",
-      "room": "1/10"
+      "date": "2026-05-24",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 1,
+      "subject": "Historia",
+      "room": "1/3"
     },
     {
-      "date": "2026-04-19",
-      "lesson": 11,
-      "start": "16:20",
-      "end": "17:05",
-      "semester": 1,
+      "date": "2026-05-24",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 2,
       "subject": "informatyka",
       "room": "0/6"
     },
     {
-      "date": "2026-04-19",
-      "lesson": 11,
-      "start": "16:20",
-      "end": "17:05",
-      "semester": 2,
-      "subject": "Biologia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 11,
-      "start": "16:20",
-      "end": "17:05",
+      "date": "2026-05-24",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
       "semester": 3,
       "subject": "Język polski",
       "room": "0/7"
     },
     {
-      "date": "2026-04-19",
-      "lesson": 11,
-      "start": "16:20",
-      "end": "17:05",
-      "semester": 4,
+      "date": "2026-05-24",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 5,
+      "subject": "Biologia",
+      "room": ""
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 6,
+      "subject": "Język angielski",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 6,
+      "start": "12:10",
+      "end": "12:55",
+      "semester": 7,
       "subject": "Historia",
       "room": "0/5"
     },
     {
-      "date": "2026-04-19",
-      "lesson": 11,
-      "start": "16:20",
-      "end": "17:05",
-      "semester": 5,
-      "subject": "Matematyka",
-      "room": "1/10"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 12,
-      "start": "17:10",
-      "end": "17:55",
-      "semester": 1,
+      "date": "2026-05-24",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 2,
       "subject": "informatyka",
       "room": "0/6"
     },
     {
-      "date": "2026-04-19",
-      "lesson": 12,
-      "start": "17:10",
-      "end": "17:55",
-      "semester": 2,
-      "subject": "Biologia",
-      "room": "1/3"
-    },
-    {
-      "date": "2026-04-19",
-      "lesson": 12,
-      "start": "17:10",
-      "end": "17:55",
-      "semester": 3,
+      "date": "2026-05-24",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 5,
       "subject": "Język polski",
       "room": "0/7"
     },
     {
-      "date": "2026-04-19",
+      "date": "2026-05-24",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 6,
+      "subject": "Język angielski",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 7,
+      "start": "13:00",
+      "end": "13:45",
+      "semester": 7,
+      "subject": "Historia",
+      "room": "0/5"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 8,
+      "start": "13:50",
+      "end": "14:35",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 8,
+      "start": "13:50",
+      "end": "14:35",
+      "semester": 6,
+      "subject": "Język angielski",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 9,
+      "start": "14:40",
+      "end": "15:25",
+      "semester": 5,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 9,
+      "start": "14:40",
+      "end": "15:25",
+      "semester": 6,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 6,
+      "subject": "Matematyka",
+      "room": "1/10"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 10,
+      "start": "15:30",
+      "end": "16:15",
+      "semester": 7,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-24",
+      "lesson": 11,
+      "start": "16:20",
+      "end": "17:05",
+      "semester": 7,
+      "subject": "Język polski",
+      "room": "0/7"
+    },
+    {
+      "date": "2026-05-24",
       "lesson": 12,
       "start": "17:10",
       "end": "17:55",
-      "semester": 5,
-      "subject": "Matematyka",
-      "room": "1/10"
+      "semester": 7,
+      "subject": "Język polski",
+      "room": "0/7"
     }
   ]
 }
